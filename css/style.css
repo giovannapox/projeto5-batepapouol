@@ -1,0 +1,157 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+header{
+    width: 100vw;
+    height: 80px;
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+header ion-icon{
+    width: 42px;
+    height: 31px;
+    margin-right: 24px;
+}
+
+header img{
+    width: 75px;
+    height: 53px;
+    margin-left: 22px;
+}
+
+.chat{
+    width: 100vw;
+    height: 100vh;
+    background: #F3F3F3;
+    padding-top: 106px;
+}
+
+.entrarNaSala, .sairDaSala{
+    width: 100vw;
+    height: 40px;
+    background-color: #DCDCDC;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.mensagemNaSala{
+    width: 100vw;
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.mensagemReservada{
+    width: 100vw;
+    height: 40px;
+    background-color: #FFDEDE;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.inferior{
+    height: 80px;
+    width: 100vw;
+    background-color: #FFFFFF;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+}
+
+.inferior input{
+    margin-left: 17px;
+    border: none;
+    height: 30px;
+}
+
+.placeholder-inferior::placeholder{
+    color: #000000;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.inferior ion-icon{
+    width: 26px;
+    height: 26px;
+    margin-right: 27px;
+}
+
+.telaLogin{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.telaLogin img{
+    width: 130px;
+    height: 92px;
+    margin-top: 72px;
+}
+
+.telaLogin input{
+    margin-top: 94px;
+    width: 261px;
+    height: 54px;
+    border: 1px solid 
+    #D7D7D7;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.placeholder-login::placeholder{
+    color: 
+    #AEAEAE;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    font-weight: 400;
+}
+
+button{
+    margin-top: 20px;
+    width: 109px;
+    height: 45px;
+    background-color: #E7E7E7;
+    border: none;
+    border-radius: 9px;
+    color: #696969;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+}
+
+.escondido{
+    display: none;
+}
