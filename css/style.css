@@ -39,7 +39,7 @@ header img{
     padding-top: 106px;
 }
 
-.entrarNaSala, .sairDaSala{
+.entrouSaiuNaSala {
     width: 100vw;
     height: 40px;
     background-color: #DCDCDC;
@@ -47,6 +47,18 @@ header img{
     display: flex;
     align-items: center;
     margin-bottom: 4px;
+}
+
+.tempo{
+    margin-left: 8px;
+    color:  #AAAAAA;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.nome{
+    font-weight: 700;
+    margin-right: 4px;
 }
 
 .mensagemNaSala{
@@ -89,7 +101,7 @@ header img{
     height: 30px;
 }
 
-.placeholder-inferior::placeholder{
+.mensagem::placeholder{
     color: #000000;
     font-style: italic;
     font-size: 18px;
@@ -130,7 +142,7 @@ header img{
     text-align: center;
 }
 
-.placeholder-login::placeholder{
+.login::placeholder{
     color: 
     #AEAEAE;
     font-size: 18px;
