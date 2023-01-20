@@ -1,8 +1,9 @@
+const user = {name: ""};
+const envioDeMensagem = {from:"", to:"", text:"", type:""};
 
-function entrar(){
+function entrar(login){
     
-    username = document.querySelector(".login").value;
-    const user = {name: username};
+    user.name = document.querySelector(".login").value;
 
     const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', user);
     promessa.then(entrouNaSala);
@@ -13,17 +14,21 @@ function entrouNaSala(sucesso){
     document.querySelector('.telaLogin').classList.add('escondido');
     document.querySelector('.container').classList.remove('escondido');
 
-    BuscaMensagem();
+    interval();
 }
 
 function erroAoEntrar(erro){
     alert('Insira um outro nome');
 }
 
-/*setInterval(function usuarioAtivo(){
-    const user = {name: username};
+function interval(){
+    setInterval(usuarioAtivo, 5000);
+    setInterval(BuscaMensagem, 3000);
+}
+
+function usuarioAtivo(){
     axios.post('https://mock-api.driven.com.br/api/v6/uol/status', user);
-}, 5000)*/
+}
 
 function BuscaMensagem(){
     const promessa = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages')
@@ -48,7 +53,7 @@ function exibirChat(sucesso){
         if(tipo == 'status'){
             
             chat.innerHTML +=
-            `<div class="entrouSaiuNaSala">
+            `<div data-test="message" class="msg entrouSaiuNaSala">
             <span class="tempo">(${mensagens[i].time})</span>
             <span class="nome">${mensagens[i].from}</span>
             <span>${mensagens[i].text}</span>
@@ -56,7 +61,7 @@ function exibirChat(sucesso){
 
         } else if (tipo == 'message') {
             chat.innerHTML +=
-            `<div class="mensagemNaSala">
+            `<div data-test="message" class="msg mensagemNaSala">
             <span class="tempo">(${mensagens[i].time})</span>
             <span class="nome">${mensagens[i].from}</span>
             <span>para<span>
@@ -65,22 +70,48 @@ function exibirChat(sucesso){
             </div>`
 
         } else if(tipo == 'private_message'){
+            if(mensagens.from === user || mensagens.to === user){
             chat.innerHTML += 
-            `<div class="mensagemReservada">
+            `<div data-test="message" class="msg mensagemReservada">
             <span class="tempo">(${mensagens[i].time})</span>
             <span class="nome">${mensagens[i].from}</span>
             <span>reservadamente para<span>
             <span class="nome">${mensagens[i].to}:</span>
             <span>${mensagens[i].text}</span>
             </div>`
+            }
         }
     }
     
+    const elementoQueQueroQueApareca = document.querySelectorAll(".msg");
+    const ultimaMsg = elementoQueQueroQueApareca.length - 1;
+    elementoQueQueroQueApareca[ultimaMsg].scrollIntoView();
 
 }
 
-function UsernameInvalido() {
-	if (username === undefined){ 
-        return;
-    }
+function mostrarParticipantes(show){
+    alert('oi')
+}
+
+function enviarMensagem(enviar){
+    let mensagem = document.querySelector(".mensagem").value;
+
+        envioDeMensagem.from = user.name,
+        envioDeMensagem.to = "Todos",
+        envioDeMensagem.text = mensagem,
+        envioDeMensagem.type = "message" 
+
+    const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', envioDeMensagem)
+    promessa.then(sucessoEnviar);
+    promessa.catch(erroEnviar);   
+    document.querySelector(".mensagem").value = "";
+}
+
+function erroEnviar(erro){
+    window.location.reload()
+}
+
+function sucessoEnviar(sucesso){
+    BuscaMensagem();
+    exibirChat();
 }

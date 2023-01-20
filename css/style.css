@@ -32,6 +32,15 @@ header img{
     margin-left: 22px;
 }
 
+header button, .inferior button{
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+}
+
 .chat{
     width: 100vw;
     height: 100vh;
@@ -103,6 +112,12 @@ header img{
     height: 30px;
 }
 
+textarea:focus,
+  input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+  }
+
 .mensagem::placeholder{
     color: #000000;
     font-style: italic;
@@ -152,7 +167,7 @@ header img{
     font-weight: 400;
 }
 
-button{
+.telaLogin button{
     margin-top: 20px;
     width: 109px;
     height: 45px;

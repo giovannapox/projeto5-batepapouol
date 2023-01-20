@@ -16,22 +16,22 @@
         <div class="container escondido">
             <header>
                 <img src="imagens/logo 1.png" />
-                <ion-icon name="people"></ion-icon>
+                <button onclick="mostrarParticipantes(this)"><ion-icon name="people"></ion-icon></button>
             </header>
             <div class="chat">
                 
             </div>
 
             <div class="inferior">
-                <input class="mensagem" type="text" placeholder="Escreva aqui..."/>
-                <ion-icon name="paper-plane-outline"></ion-icon>
+                <input data-test="input-message" class="mensagem" type="text" placeholder="Escreva aqui..."/>
+                <button data-test="send-message" onclick="enviarMensagem(this)"><ion-icon name="paper-plane-outline"></ion-icon></button>
             </div>
         </div>  
 
         <div class="telaLogin">
             <img src="imagens/logo 2.png">
-            <input class="login" type="text" placeholder="Digite seu nome" />
-            <button onclick="entrar()">Entrar</button>
+            <input data-test="input-name" class="login" type="text" placeholder="Digite seu nome" />
+            <button data-test="send-name" onclick="entrar(this)">Entrar</button>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
