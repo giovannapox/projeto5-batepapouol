@@ -6,12 +6,16 @@ function entrar(login){
     user.name = document.querySelector(".login").value;
 
     const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', user);
+    
+    document.querySelector('.telaLogin').classList.add('escondido');
+    document.querySelector('.carregando').classList.remove('escondido');
+
     promessa.then(entrouNaSala);
     promessa.catch(erroAoEntrar);
 }
 
 function entrouNaSala(sucesso){
-    document.querySelector('.telaLogin').classList.add('escondido');
+    document.querySelector('.carregando').classList.add('escondido');
     document.querySelector('.container').classList.remove('escondido');
 
     interval();
