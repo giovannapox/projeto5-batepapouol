@@ -115,3 +115,13 @@ function sucessoEnviar(sucesso){
     BuscaMensagem();
     exibirChat();
 }
+
+document.addEventListener('keypress', function(e){
+    if(e.key === "Enter"){
+
+        const botao = document.querySelector('.enviar');
+
+        botao.click();
+    }
+    
+})
