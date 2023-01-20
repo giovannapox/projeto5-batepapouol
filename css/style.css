@@ -44,13 +44,13 @@ header img{
     height: 40px;
     background-color: #DCDCDC;
     border-radius: 2px;
+    padding-left: 8px;
     display: flex;
     align-items: center;
     margin-bottom: 4px;
 }
 
 .tempo{
-    margin-left: 8px;
     color:  #AAAAAA;
     font-size: 14px;
     margin-right: 8px;
@@ -63,12 +63,13 @@ header img{
 
 .mensagemNaSala{
     width: 100vw;
-    height: 40px;
     background-color: #FFFFFF;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-radius: 2px;
-    display: flex;
-    align-items: center;
+    padding-left: 8px;
     margin-bottom: 4px;
+    line-height: 20px;
 }
 
 .mensagemReservada{
@@ -78,6 +79,7 @@ header img{
     border-radius: 2px;
     display: flex;
     align-items: center;
+    padding-left: 8px;
     margin-bottom: 4px;
 }
 
@@ -119,7 +121,6 @@ header img{
     height: 100vh;
     position: absolute;
     top: 0;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
