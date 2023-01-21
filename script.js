@@ -1,5 +1,6 @@
 const user = {name: ""};
 const envioDeMensagem = {from:"", to:"", text:"", type:""};
+const participantes = {name: ""};
 
 function entrar(login){
     
@@ -23,11 +24,14 @@ function entrouNaSala(sucesso){
 
 function erroAoEntrar(erro){
     alert('Insira um outro nome');
+    document.querySelector('.carregando').classList.add('escondido');
+    document.querySelector('.telaLogin').classList.remove('escondido');
 }
 
 function interval(){
     setInterval(usuarioAtivo, 5000);
     setInterval(BuscaMensagem, 3000);
+    setInterval(buscarParticipantes, 10000);
 }
 
 function usuarioAtivo(){
@@ -94,7 +98,9 @@ function exibirChat(sucesso){
 }
 
 function mostrarParticipantes(show){
-    alert('oi')
+    document.querySelector('.tela-bonus').classList.remove('escondido');
+
+
 }
 
 function enviarMensagem(enviar){
@@ -129,3 +135,38 @@ document.addEventListener('keypress', function(e){
     }
     
 })
+
+function esconderMenu(){
+    document.querySelector('.tela-bonus').classList.add('escondido');
+}
+
+function buscarParticipantes(){
+
+    const promessa = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants', participantes)
+    promessa.then(sucessoParticipantes);
+    promessa.catch(erroParticipantes);  
+}
+
+function sucessoParticipantes(resposta){
+
+    const users = resposta.data;
+    const lista = document.querySelector('.participantes');
+
+    lista.innerHTML = 
+    `<li><ion-icon name="people"></ion-icon> Todos
+    <ion-icon name="checkmark"></ion-icon></li>`
+
+    for(let i = 0; i < users.length; i++){
+        lista.innerHTML+=
+        `<li onclick="selecionarParticipante(this)">
+                <ion-icon name="person-circle"></ion-icon>
+                <span>${users[i].name}</span>
+                <ion-icon name="checkmark-outline"></ion-icon>
+            </li>`;
+
+}
+}
+
+function erroParticipantes(erro){
+    alert("Não foi possivel mostrar os participantes da sala")
+}
