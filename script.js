@@ -153,15 +153,22 @@ function sucessoParticipantes(resposta){
     const lista = document.querySelector('.participantes');
 
     lista.innerHTML = 
-    `<li><ion-icon name="people"></ion-icon> Todos
-    <ion-icon name="checkmark"></ion-icon></li>`
+    `<li onclick="selecionarParticipante(this)">
+        <ion-icon name="people"></ion-icon> 
+        <div class="div-icone">
+            Todos
+        <ion-icon class="icone" name="checkmark"></ion-icon>
+        </div>
+    </li>`
 
     for(let i = 0; i < users.length; i++){
         lista.innerHTML+=
         `<li onclick="selecionarParticipante(this)">
                 <ion-icon name="person-circle"></ion-icon>
+                <div class="div-icone">
                 <span>${users[i].name}</span>
-                <ion-icon name="checkmark-outline"></ion-icon>
+                <ion-icon class="icone" name="checkmark-outline"></ion-icon>
+                </div>
             </li>`;
 
 }
@@ -170,3 +177,29 @@ function sucessoParticipantes(resposta){
 function erroParticipantes(erro){
     alert("Não foi possivel mostrar os participantes da sala")
 }
+
+
+function selecionarParticipante(esse){
+
+    const limpaEscolhido = document.querySelector('.participantes .escolhido');
+
+    if(limpaEscolhido !== null){
+        limpaEscolhido.classList.remove('escolhido');
+    }
+
+    esse.classList.add('escolhido');
+}
+
+function selecionarVisibilidade(selecionado){
+
+    const escolhido = document.querySelector('.visibilidades .escolhido');
+    
+    if(escolhido !== null){
+        escolhido.classList.remove('escolhido');
+    }
+
+    selecionado.classList.add('escolhido');
+}
+
+
+document.querySelector('.enviando-para').innerHTML = `Enviando para Maria (reservadamente)`

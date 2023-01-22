@@ -112,7 +112,7 @@ header button, .inferior button{
     margin-left: 17px;
     border: none;
     height: 30px;
-    width: 2000px;
+    width:1800px;
 }
 
 textarea:focus,
@@ -264,6 +264,36 @@ li{
     align-items: center;
 }
 
+.icone{
+    width: 30px;
+    height: 20px;
+    color: 
+    #28BB25;
+    display: none;
+}
+
+.escolhido .icone{
+    display: initial;
+}
+
+.div-icone{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .escondido{
     display: none;
+}
+
+.area-mensagem{
+    display: flex;
+    flex-direction: column;
+}
+
+.enviando-para{
+    margin-left: 17px;
+    color: #505050;
+    font-size: 14px;
 }

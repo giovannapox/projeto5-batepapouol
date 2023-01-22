@@ -23,7 +23,11 @@
             </div>
 
             <div class="inferior">
-                <input data-test="input-message" class="mensagem" type="text" placeholder="Escreva aqui..."/>
+                <div class="area-mensagem">
+                    <input data-test="input-message" class="mensagem" type="text" placeholder="Escreva aqui..."/>
+                    <div class="enviando-para">
+                    </div>
+                </div>
                 <button data-test="send-message" class="enviar" onclick="enviarMensagem(this)"><ion-icon name="paper-plane-outline"></ion-icon></button>
             </div>
         </div>  
@@ -50,9 +54,21 @@
                 <div class="titulo2">
                     <h1>Escolha a visibilidade:</h1>
                 </div>
-                <ul>
-                    <li><ion-icon name="lock-open"></ion-icon> Público</li>
-                    <li><ion-icon name="lock-closed"></ion-icon> Reservadamente</li>
+                <ul class="visibilidades">
+                    <li class="teste" onclick="selecionarVisibilidade(this)">
+                        <ion-icon name="lock-open"></ion-icon> 
+                        <div class="div-icone">
+                            Público
+                            <ion-icon class="icone" name="checkmark"></ion-icon>
+                        </div>
+                    </li>
+                    <li class="teste" onclick="selecionarVisibilidade(this)">
+                        <ion-icon name="lock-closed"></ion-icon> 
+                        <div class="div-icone">
+                            Reservadamente
+                            <ion-icon class="icone" name="checkmark"></ion-icon>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
