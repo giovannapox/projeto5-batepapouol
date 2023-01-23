@@ -23,11 +23,7 @@
             </div>
 
             <div class="inferior">
-                <div class="area-mensagem">
-                    <input data-test="input-message" class="mensagem" type="text" placeholder="Escreva aqui..."/>
-                    <div data-test="recipient" class="enviando-para">
-                    </div>
-                </div>
+                <input data-test="input-message" class="mensagem" type="text" placeholder="Escreva aqui..."/>
                 <button data-test="send-message" class="enviar" onclick="enviarMensagem(this)"><ion-icon name="paper-plane-outline"></ion-icon></button>
             </div>
         </div>  
@@ -43,35 +39,6 @@
             <img class="gif" src="imagens/giphy.gif">
         </div>
 
-        <div class="tela-bonus escondido">
-            <div data-test="overlay" onclick="esconderMenu(this)" class="chat-fundo"></div>
-            <div class="menu-participantes">
-                <div class="titulo1">
-                    <h1>Escolha um contato para enviar mensagem:</h1>
-                </div>
-                <ul class="participantes">
-                </ul>
-                <div class="titulo2">
-                    <h1>Escolha a visibilidade:</h1>
-                </div>
-                <ul class="visibilidades">
-                    <li data-test="public" class="teste" onclick="selecionarVisibilidade(this)">
-                        <ion-icon name="lock-open"></ion-icon> 
-                        <div class="div-icone">
-                            <span class="visi">Público</span>
-                            <ion-icon data-test="check" class="icone" name="checkmark"></ion-icon>
-                        </div>
-                    </li>
-                    <li data-test="private" class="teste" onclick="selecionarVisibilidade(this)">
-                        <ion-icon name="lock-closed"></ion-icon> 
-                        <div class="div-icone">
-                            <span class="visi">Reservadamente</span>
-                            <ion-icon data-test="check" class="icone" name="checkmark"></ion-icon>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

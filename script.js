@@ -1,9 +1,5 @@
 const user = {name: ""};
 const envioDeMensagem = {from:"", to:"", text:"", type:""};
-const participantes = {name: ""};
-let visibilidadeSelecionada = "";
-let usuarioSelecionado = "";
-let VS = "";
 
 function entrar(login){
     
@@ -34,7 +30,6 @@ function erroAoEntrar(erro){
 function interval(){
     setInterval(usuarioAtivo, 5000);
     setInterval(BuscaMensagem, 3000);
-    setInterval(buscarParticipantes, 10000);
 }
 
 function usuarioAtivo(){
@@ -103,10 +98,6 @@ function exibirChat(sucesso){
 
 }
 
-function mostrarParticipantes(show){
-    document.querySelector('.tela-bonus').classList.remove('escondido');
-}
-
 function enviarMensagem(enviar){
     let mensagem = document.querySelector(".mensagem").value;
 
@@ -140,80 +131,7 @@ document.addEventListener('keypress', function(e){
     
 })
 
-function esconderMenu(){
-    document.querySelector('.tela-bonus').classList.add('escondido');
-}
-
-function buscarParticipantes(){
-
-    const promessa = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants', participantes)
-    promessa.then(sucessoParticipantes);
-    promessa.catch(erroParticipantes);  
-}
-
-function sucessoParticipantes(resposta){
-
-    const users = resposta.data;
-    const lista = document.querySelector('.participantes');
-
-    lista.innerHTML = 
-    `<li data-test="all" onclick="selecionarParticipante(this)">
-        <ion-icon name="people"></ion-icon> 
-        <div class="div-icone">
-            <span class="usuario">Todos</span>
-        <ion-icon class="icone" name="checkmark"></ion-icon>
-        </div>
-    </li>`
-
-    for(let i = 0; i < users.length; i++){
-        lista.innerHTML+=
-        `<li data-test="participant" onclick="selecionarParticipante(this)">
-                <ion-icon name="person-circle"></ion-icon>
-                <div class="div-icone">
-                <span class="usuario">${users[i].name}</span>
-                <ion-icon data-test="check" class="icone" name="checkmark-outline"></ion-icon>
-                </div>
-            </li>`;
-
-}
-}
-
-function erroParticipantes(erro){
-    alert("Não foi possivel mostrar os participantes da sala")
-}
 
 
-function selecionarParticipante(esse){
-
-    const limpaEscolhido = document.querySelector('.participantes .escolhido');
-
-    if(limpaEscolhido !== null){
-        limpaEscolhido.classList.remove('escolhido');
-    }
-
-    esse.classList.add('escolhido');
-    usuarioSelecionado = esse.querySelector('.usuario').innerHTML;
-    document.querySelector('.enviando-para').innerHTML = `Enviando para ${usuarioSelecionado} (${visibilidadeSelecionada})`;
-}
-
-function selecionarVisibilidade(selecionado){
-
-    const escolhido = document.querySelector('.visibilidades .escolhido');
-    
-    if(escolhido !== null){
-        escolhido.classList.remove('escolhido');
-    }
-
-    selecionado.classList.add('escolhido');
-
-    visibilidadeSelecionada = selecionado.querySelector('.visi').innerHTML;
-    document.querySelector('.enviando-para').innerHTML = `Enviando para ${usuarioSelecionado} (${visibilidadeSelecionada})`;
-
-    if(visibilidadeSelecionada === 'Reservadamente'){
-        VS = 'private_message';
-    } else {
-        VS = 'message';
-    }
-}
 
 
