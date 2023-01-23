@@ -1,6 +1,9 @@
 const user = {name: ""};
 const envioDeMensagem = {from:"", to:"", text:"", type:""};
 const participantes = {name: ""};
+let visibilidadeSelecionada = "";
+let usuarioSelecionado = "";
+let VS = "";
 
 function entrar(login){
     
@@ -50,13 +53,14 @@ function erroMensagem(erro){
 }
 
 function exibirChat(sucesso){
-    const mensagens = sucesso.data;
-    const chat = document.querySelector('.chat');
+    let mensagens = sucesso.data;
+    
+    let chat = document.querySelector('.chat');
     chat.innerHTML = "";
 
     for(let i = 0; i < mensagens.length; i++){
 
-        const tipo = mensagens[i].type;
+        let tipo = mensagens[i].type;
 
         if(tipo == 'status'){
             
@@ -78,7 +82,9 @@ function exibirChat(sucesso){
             </div>`
 
         } else if(tipo == 'private_message'){
-            if(mensagens.from === user || mensagens.to === user){
+            
+            if(mensagens[i].from == user || mensagens[i].to == user){
+
             chat.innerHTML += 
             `<div data-test="message" class="msg mensagemReservada">
             <span class="tempo">(${mensagens[i].time})</span>
@@ -87,7 +93,7 @@ function exibirChat(sucesso){
             <span class="nome">${mensagens[i].to}:</span>
             <span>${mensagens[i].text}</span>
             </div>`
-            }
+           }
         }
     }
     
@@ -99,17 +105,15 @@ function exibirChat(sucesso){
 
 function mostrarParticipantes(show){
     document.querySelector('.tela-bonus').classList.remove('escondido');
-
-
 }
 
 function enviarMensagem(enviar){
     let mensagem = document.querySelector(".mensagem").value;
 
         envioDeMensagem.from = user.name,
-        envioDeMensagem.to = "Todos",
+        envioDeMensagem.to =  usuarioSelecionado
         envioDeMensagem.text = mensagem,
-        envioDeMensagem.type = "message" 
+        envioDeMensagem.type = VS;
 
     const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', envioDeMensagem)
     promessa.then(sucessoEnviar);
@@ -118,7 +122,7 @@ function enviarMensagem(enviar){
 }
 
 function erroEnviar(erro){
-    window.location.reload()
+    window.location.reload();
 }
 
 function sucessoEnviar(sucesso){
@@ -153,21 +157,21 @@ function sucessoParticipantes(resposta){
     const lista = document.querySelector('.participantes');
 
     lista.innerHTML = 
-    `<li onclick="selecionarParticipante(this)">
+    `<li data-test="all" onclick="selecionarParticipante(this)">
         <ion-icon name="people"></ion-icon> 
         <div class="div-icone">
-            Todos
+            <span class="usuario">Todos</span>
         <ion-icon class="icone" name="checkmark"></ion-icon>
         </div>
     </li>`
 
     for(let i = 0; i < users.length; i++){
         lista.innerHTML+=
-        `<li onclick="selecionarParticipante(this)">
+        `<li data-test="participant" onclick="selecionarParticipante(this)">
                 <ion-icon name="person-circle"></ion-icon>
                 <div class="div-icone">
-                <span>${users[i].name}</span>
-                <ion-icon class="icone" name="checkmark-outline"></ion-icon>
+                <span class="usuario">${users[i].name}</span>
+                <ion-icon data-test="check" class="icone" name="checkmark-outline"></ion-icon>
                 </div>
             </li>`;
 
@@ -188,6 +192,8 @@ function selecionarParticipante(esse){
     }
 
     esse.classList.add('escolhido');
+    usuarioSelecionado = esse.querySelector('.usuario').innerHTML;
+    document.querySelector('.enviando-para').innerHTML = `Enviando para ${usuarioSelecionado} (${visibilidadeSelecionada})`;
 }
 
 function selecionarVisibilidade(selecionado){
@@ -199,7 +205,15 @@ function selecionarVisibilidade(selecionado){
     }
 
     selecionado.classList.add('escolhido');
+
+    visibilidadeSelecionada = selecionado.querySelector('.visi').innerHTML;
+    document.querySelector('.enviando-para').innerHTML = `Enviando para ${usuarioSelecionado} (${visibilidadeSelecionada})`;
+
+    if(visibilidadeSelecionada === 'Reservadamente'){
+        VS = 'private_message';
+    } else {
+        VS = 'message';
+    }
 }
 
 
-document.querySelector('.enviando-para').innerHTML = `Enviando para Maria (reservadamente)`

@@ -16,7 +16,7 @@
         <div class="container escondido">
             <header>
                 <img src="imagens/logo 1.png" />
-                <button onclick="mostrarParticipantes(this)"><ion-icon name="people"></ion-icon></button>
+                <button data-test="open-participants" onclick="mostrarParticipantes(this)"><ion-icon name="people"></ion-icon></button>
             </header>
             <div class="chat">
                 
@@ -25,7 +25,7 @@
             <div class="inferior">
                 <div class="area-mensagem">
                     <input data-test="input-message" class="mensagem" type="text" placeholder="Escreva aqui..."/>
-                    <div class="enviando-para">
+                    <div data-test="recipient" class="enviando-para">
                     </div>
                 </div>
                 <button data-test="send-message" class="enviar" onclick="enviarMensagem(this)"><ion-icon name="paper-plane-outline"></ion-icon></button>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="tela-bonus escondido">
-            <div onclick="esconderMenu(this)" class="chat-fundo"></div>
+            <div data-test="overlay" onclick="esconderMenu(this)" class="chat-fundo"></div>
             <div class="menu-participantes">
                 <div class="titulo1">
                     <h1>Escolha um contato para enviar mensagem:</h1>
@@ -55,18 +55,18 @@
                     <h1>Escolha a visibilidade:</h1>
                 </div>
                 <ul class="visibilidades">
-                    <li class="teste" onclick="selecionarVisibilidade(this)">
+                    <li data-test="public" class="teste" onclick="selecionarVisibilidade(this)">
                         <ion-icon name="lock-open"></ion-icon> 
                         <div class="div-icone">
-                            Público
-                            <ion-icon class="icone" name="checkmark"></ion-icon>
+                            <span class="visi">Público</span>
+                            <ion-icon data-test="check" class="icone" name="checkmark"></ion-icon>
                         </div>
                     </li>
-                    <li class="teste" onclick="selecionarVisibilidade(this)">
+                    <li data-test="private" class="teste" onclick="selecionarVisibilidade(this)">
                         <ion-icon name="lock-closed"></ion-icon> 
                         <div class="div-icone">
-                            Reservadamente
-                            <ion-icon class="icone" name="checkmark"></ion-icon>
+                            <span class="visi">Reservadamente</span>
+                            <ion-icon data-test="check" class="icone" name="checkmark"></ion-icon>
                         </div>
                     </li>
                 </ul>
