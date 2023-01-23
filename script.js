@@ -1,11 +1,12 @@
-const user = {name: ""};
+let user = "";
 const envioDeMensagem = {from:"", to:"", text:"", type:""};
 
 function entrar(login){
     
-    user.name = document.querySelector(".login").value;
+    user = document.querySelector(".login").value;
+    const username = {name: user}
 
-    const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', user);
+    const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', username);
     
     document.querySelector('.telaLogin').classList.add('escondido');
     document.querySelector('.carregando').classList.remove('escondido');
@@ -33,7 +34,8 @@ function interval(){
 }
 
 function usuarioAtivo(){
-    axios.post('https://mock-api.driven.com.br/api/v6/uol/status', user);
+    const username = {name: user}
+    axios.post('https://mock-api.driven.com.br/api/v6/uol/status', username);
 }
 
 function BuscaMensagem(){
