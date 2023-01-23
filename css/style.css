@@ -112,6 +112,7 @@ header button, .inferior button{
     margin-left: 17px;
     border: none;
     height: 30px;
+    width:80%;
 }
 
 textarea:focus,
@@ -137,7 +138,6 @@ textarea:focus,
     width: 100vw;
     height: 100vh;
     position: absolute;
-    top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -186,7 +186,6 @@ textarea:focus,
         width: 100vw;
         height: 100vh;
         position: absolute;
-        top: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
