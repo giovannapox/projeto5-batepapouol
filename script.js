@@ -115,7 +115,6 @@ function erroEnviar(erro){
 
 function sucessoEnviar(sucesso){
     BuscaMensagem();
-    exibirChat();
 }
 
 document.addEventListener('keypress', function(e){
