@@ -76,7 +76,7 @@ function exibirChat(sucesso){
             </div>`
 
         } else if(tipo == 'private_message'){
-            if(mensagens.from === user[0].name || mensagens.to === user[0].name){
+            if(mensagens[i].from === user.name || mensagens[i].to === user.name){
             chat.innerHTML += 
             `<div data-test="message" class="msg mensagemReservada">
             <span class="tempo">(${mensagens[i].time})</span>
