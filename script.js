@@ -23,6 +23,8 @@ function entrouNaSala(sucesso){
 
 function erroAoEntrar(erro){
     alert('Insira um outro nome');
+    document.querySelector('.carregando').classList.add('escondido');
+    document.querySelector('.telaLogin').classList.remove('escondido');
 }
 
 function interval(){
