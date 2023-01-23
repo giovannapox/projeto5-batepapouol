@@ -23,8 +23,6 @@ function entrouNaSala(sucesso){
 
 function erroAoEntrar(erro){
     alert('Insira um outro nome');
-    document.querySelector('.carregando').classList.add('escondido');
-    document.querySelector('.telaLogin').classList.remove('escondido');
 }
 
 function interval(){
@@ -48,14 +46,13 @@ function erroMensagem(erro){
 }
 
 function exibirChat(sucesso){
-    let mensagens = sucesso.data;
-    
-    let chat = document.querySelector('.chat');
+    const mensagens = sucesso.data;
+    const chat = document.querySelector('.chat');
     chat.innerHTML = "";
 
     for(let i = 0; i < mensagens.length; i++){
 
-        let tipo = mensagens[i].type;
+        const tipo = mensagens[i].type;
 
         if(tipo == 'status'){
             
@@ -77,9 +74,7 @@ function exibirChat(sucesso){
             </div>`
 
         } else if(tipo == 'private_message'){
-            
-            if(mensagens[i].from == user || mensagens[i].to == user){
-
+            if(mensagens.from === user || mensagens.to === user){
             chat.innerHTML += 
             `<div data-test="message" class="msg mensagemReservada">
             <span class="tempo">(${mensagens[i].time})</span>
@@ -88,7 +83,7 @@ function exibirChat(sucesso){
             <span class="nome">${mensagens[i].to}:</span>
             <span>${mensagens[i].text}</span>
             </div>`
-           }
+            }
         }
     }
     
@@ -98,13 +93,17 @@ function exibirChat(sucesso){
 
 }
 
+function mostrarParticipantes(show){
+    alert('oi')
+}
+
 function enviarMensagem(enviar){
     let mensagem = document.querySelector(".mensagem").value;
 
         envioDeMensagem.from = user.name,
-        envioDeMensagem.to =  "Todos",
+        envioDeMensagem.to = "Todos",
         envioDeMensagem.text = mensagem,
-        envioDeMensagem.type = "message";
+        envioDeMensagem.type = "message" 
 
     const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', envioDeMensagem)
     promessa.then(sucessoEnviar);
@@ -113,7 +112,7 @@ function enviarMensagem(enviar){
 }
 
 function erroEnviar(erro){
-    window.location.reload();
+    window.location.reload()
 }
 
 function sucessoEnviar(sucesso){
@@ -130,8 +129,3 @@ document.addEventListener('keypress', function(e){
     }
     
 })
-
-
-
-
-
