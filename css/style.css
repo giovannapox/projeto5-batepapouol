@@ -6,12 +6,14 @@
 
 body{
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
 
 header{
     width: 100vw;
     height: 80px;
     position: fixed;
+    top: 0;
     z-index: 1;
     display: flex;
     justify-content: space-between;
@@ -43,9 +45,9 @@ header button, .inferior button{
 
 .chat{
     width: 100vw;
-    height: 100vh;
     background: #F3F3F3;
     padding-top: 106px;
+    padding-bottom: 90px;
 }
 
 .entrouSaiuNaSala {
@@ -67,7 +69,7 @@ header button, .inferior button{
 
 .nome{
     font-weight: 700;
-    margin-right: 4px;
+    margin-right: 3px;
 }
 
 .mensagemNaSala{

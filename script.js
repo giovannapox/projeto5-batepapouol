@@ -93,10 +93,6 @@ function exibirChat(sucesso){
 
 }
 
-function mostrarParticipantes(show){
-    alert('oi')
-}
-
 function enviarMensagem(enviar){
     let mensagem = document.querySelector(".mensagem").value;
 
