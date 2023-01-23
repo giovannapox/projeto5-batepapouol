@@ -102,9 +102,9 @@ function enviarMensagem(enviar){
     let mensagem = document.querySelector(".mensagem").value;
 
         envioDeMensagem.from = user.name,
-        envioDeMensagem.to =  usuarioSelecionado
+        envioDeMensagem.to =  "Todos",
         envioDeMensagem.text = mensagem,
-        envioDeMensagem.type = VS;
+        envioDeMensagem.type = "message";
 
     const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', envioDeMensagem)
     promessa.then(sucessoEnviar);
